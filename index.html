@@ -10,6 +10,36 @@
 </head>
 <body>
     <h1 class="title">Odin Library</h1>
+
+    <button id="add-book">New</button>
+
+    <form class="hidden" id="new-book-form" action="#">
+      <label for="book-title">
+        Title:
+        <input type="text" name="book-title" id="book-title" required>
+      </label>
+
+      <label for="book-author">
+        Author:
+        <input type="text" name="book-author" id="book-author" required>
+      </label>
+
+      <label for="book-pages">
+        Pages:
+        <input type="number" name="book-pages" id="book-pages" min='1' required>
+      </label>
+
+      <label for="book-read">
+        Read?
+        <select name="book-read" id="book-read">
+          <option value="true">Yes</option>
+          <option value="false" selected>No</option>
+        </select>
+      </label>
+
+      <input type="submit" value="Add">
+    </form>
+
     <div id="book-container"></div>
 </body>
 </html>
