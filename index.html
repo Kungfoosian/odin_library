@@ -14,30 +14,29 @@
     <button class="btn" id="add-book">New</button>
 
     <form class="hidden" id="new-book-form" action="#">
-      <label for="book-title">
-        Title:
-        <input type="text" name="book-title" id="book-title" required>
-      </label>
+      <div>
+        <label for="book-title">
+          <div>Title</div>
+          <input type="text" name="book-title" id="book-title" required>
+        </label>
+        <label for="book-author">
+          <div>Author</div>
+          <input type="text" name="book-author" id="book-author" required>
+        </label>
+        <label for="book-pages">
+          <div>Pages</div>
+          <input type="number" name="book-pages" id="book-pages" min='1' required>
+        </label>
+        <label for="book-status">
+          <div>Status</div>
+          <select name="book-status" id="book-status">
+            <option value="true">Read</option>
+            <option value="false" selected>Not Read</option>
+          </select>
+        </label>
+      </div>
 
-      <label for="book-author">
-        Author:
-        <input type="text" name="book-author" id="book-author" required>
-      </label>
-
-      <label for="book-pages">
-        Pages:
-        <input type="number" name="book-pages" id="book-pages" min='1' required>
-      </label>
-
-      <label for="book-status">
-        Read?
-        <select name="book-status" id="book-status">
-          <option value="true">Yes</option>
-          <option value="false" selected>No</option>
-        </select>
-      </label>
-
-      <input type="submit" value="Add">
+      <input class="btn" type="submit" value="Add">
     </form>
 
     <div id="book-container"></div>

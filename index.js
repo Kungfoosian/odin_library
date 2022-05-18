@@ -111,6 +111,7 @@ displayBook();
 
 newBookBtn.addEventListener('click', event => {
   newBookForm.classList.toggle('hidden');
+  newBookForm.classList.toggle('display');
 })
 
 newBookForm.addEventListener('submit', event => {

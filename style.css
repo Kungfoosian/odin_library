@@ -43,10 +43,25 @@ body {
   height: 15%;
 }
 
-.btn#add-book {
+.btn#add-book, #new-book-form input[type="submit"] {
   display: block;
   margin: 10px auto;
   padding: 20px;
 
   font-size: 18px;
+}
+
+.display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0;
+  gap:20px;
+}
+
+#new-book-form > div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
