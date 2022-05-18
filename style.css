@@ -20,11 +20,33 @@ body {
 }
 
 .book{
-  width: 33%;
+  width: 25%;
+  height: 300px;
   text-align: center;
   line-height: 2;
+  padding: 10px 0;
+
+  background-color: sandybrown;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .hidden {
   display: none;
+}
+
+.btn {
+  margin: 0 auto;
+  width: 25%;
+  height: 15%;
+}
+
+.btn#add-book {
+  display: block;
+  margin: 10px auto;
+  padding: 20px;
+
+  font-size: 18px;
 }
