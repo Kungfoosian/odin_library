@@ -1,28 +1,28 @@
 let myLibrary = [
-  {
-    title: 'Four treasures of the sky',
-    author: 'Jenny Zhang',
-    pages: 326,
-    read: false,
-  },
-  {
-    title: 'Fresh water for flowers',
-    author: 'Valerie Perrin',
-    pages: 326,
-    read: false,
-  },
-  {
-    title: 'The Fervor: A Novel',
-    author: 'Alma Katsu',
-    pages: 326,
-    read: false,
-  },
-  {
-    title: 'Mickey 7: a novel',
-    author: 'Edward Ashton',
-    pages: 326,
-    read: false,
-  },
+  // {
+  //   title: 'Four treasures of the sky',
+  //   author: 'Jenny Zhang',
+  //   pages: 326,
+  //   read: false,
+  // },
+  // {
+  //   title: 'Fresh water for flowers',
+  //   author: 'Valerie Perrin',
+  //   pages: 326,
+  //   read: false,
+  // },
+  // {
+  //   title: 'The Fervor: A Novel',
+  //   author: 'Alma Katsu',
+  //   pages: 326,
+  //   read: false,
+  // },
+  // {
+  //   title: 'Mickey 7: a novel',
+  //   author: 'Edward Ashton',
+  //   pages: 326,
+  //   read: false,
+  // },
 ];
 
 const bookContainer = document.getElementById('book-container');
@@ -123,6 +123,7 @@ newBookForm.addEventListener('submit', event => {
   let newStatus = document.getElementById('book-status').value === 'true' ? true : false;
   
   newBookForm.reset();
+  newBookForm.classList.toggle('display');
   newBookForm.classList.toggle('hidden');
 
   addBook(newTitle, newAuthor, newPages, newStatus);
