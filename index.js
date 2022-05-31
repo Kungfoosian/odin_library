@@ -1,29 +1,51 @@
-let myLibrary = [
-  // {
-  //   title: 'Four treasures of the sky',
-  //   author: 'Jenny Zhang',
-  //   pages: 326,
-  //   read: false,
-  // },
-  // {
-  //   title: 'Fresh water for flowers',
-  //   author: 'Valerie Perrin',
-  //   pages: 326,
-  //   read: false,
-  // },
-  // {
-  //   title: 'The Fervor: A Novel',
-  //   author: 'Alma Katsu',
-  //   pages: 326,
-  //   read: false,
-  // },
-  // {
-  //   title: 'Mickey 7: a novel',
-  //   author: 'Edward Ashton',
-  //   pages: 326,
-  //   read: false,
-  // },
-];
+class Book {
+  constructor(title, author, pages, status = false) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.status = status;
+  }
+
+  
+}
+
+class Library {
+  constructor() {
+    this.collection = [];
+  }
+
+  get collection() {
+    return this._collection;
+  }
+
+  set collection(value) {
+    this._collection = value;
+  }
+
+  addBook(newTitle, newAuthor, newPages, newStatus = false) {
+    let newBook = new Book(newTitle, newAuthor, newPages, newStatus);
+
+    this.collection.push(newBook);
+  }
+
+  removeBook = e => {
+    let bookId = e.target.parentElement.id;
+  
+    this.collection.splice(bookId, 1);
+  
+    displayBook();
+  }
+
+  changeStatus = e => {
+    let bookId = e.target.parentElement.id;
+    
+    this.collection[bookId].status = this.collection[bookId].status === true ? false : true;
+    
+    displayBook();
+  }
+}
+
+let myLibrary = new Library();
 
 const bookContainer = document.getElementById('book-container');
 const newBookBtn = document.getElementById('add-book');
@@ -37,23 +59,10 @@ function clearContainer(){
   }
 }
 
-function Book(title, author, pages, status) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.status = status;
-}
-
-function addBook(title, author, pages, status = false) {
-  let newBook = new Book(title, author, pages, status);
-
-  myLibrary.push(newBook);
-}
-
 function displayBook(){
   clearContainer();
 
-  myLibrary.forEach((book, index) => {
+  myLibrary.collection.forEach((book, index) => {
     let bookDiv = document.createElement('div');
     bookDiv.classList.add('book');
 
@@ -72,37 +81,19 @@ function displayBook(){
     let status = document.createElement('button');
     status.classList.add('status', 'btn');
     status.innerText = book.status? 'read' : 'not read' ;
-    status.addEventListener('click', changeStatus);
+    status.addEventListener('click', myLibrary.changeStatus);
     bookDiv.appendChild(status);
 
     let removeBtn = document.createElement('button');
     removeBtn.innerText = 'remove';
     removeBtn.classList.add('remove', 'btn');
-    removeBtn.addEventListener('click', removeBook);
+    removeBtn.addEventListener('click', myLibrary.removeBook);
     bookDiv.appendChild(removeBtn);
     
     bookDiv.id = index;
     bookContainer.appendChild(bookDiv);
   })
 }
-
-function removeBook(e){
-  let bookId = e.target.parentElement.id;
-
-  myLibrary.splice(bookId, 1);
-
-  displayBook();
-}
-
-function changeStatus(e){
-  let bookId = e.target.parentElement.id;
-  
-  myLibrary[bookId].status = myLibrary[bookId].status === true ? false : true;
-  
-  displayBook();
-}
-
-
 
 
 displayBook();
@@ -126,7 +117,7 @@ newBookForm.addEventListener('submit', event => {
   newBookForm.classList.toggle('display');
   newBookForm.classList.toggle('hidden');
 
-  addBook(newTitle, newAuthor, newPages, newStatus);
+  myLibrary.addBook(newTitle, newAuthor, newPages, newStatus);
 
   displayBook();
 
